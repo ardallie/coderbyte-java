@@ -25,6 +25,25 @@ public class Palindrome {
   }
 
   /**
+   * An improved function checking if a given string is a palindrome.
+   * It compares two halves of a string, checking if a letter
+   * from the first half matches the other half in the reverse order.
+   *
+   * @param str input string
+   * @return true if the string is a palindrome
+   */
+  private static boolean isPalindrome(String str) {
+    char[] strArr = str.toCharArray();
+    int len = strArr.length;
+    for (int i = 0; i < len / 2; i++) {
+      if (strArr[i] != strArr[len - i - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
    * Entry point.
    *
    * @param args command line arguments
@@ -32,8 +51,12 @@ public class Palindrome {
   public static void main(String[] args) {
     var result1 = palindrome("dont nod");
     System.out.println(result1);
-    var result2 = palindrome("rats live on no evil star");
+    var result2 = isPalindrome("dont nod");
     System.out.println(result2);
+    var result3 = palindrome("rats live on no evil star");
+    System.out.println(result3);
+    var result4 = isPalindrome("rats live on no evil star");
+    System.out.println(result4);
   }
 
 }
