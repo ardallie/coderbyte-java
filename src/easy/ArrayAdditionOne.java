@@ -16,19 +16,7 @@ import java.util.Arrays;
  * The array will not be empty, will not contain all the same elements,
  * and may contain negative numbers.
  */
-public class ArrayAdditionOne {
 
-  /**
-   * Left pad the string with zeroes,
-   * e.g. padLeft("fade", 8) -> "0000fade"
-   *
-   * @param str string to be padded
-   * @param len new fixed length after applying the padding
-   * @return padded string (e.g. 000000xxx)
-   */
-  private static String padLeft(String str, int len) {
-    return String.format("%" + len + "s", str).replace(" ", "0");
-  }
 
   /**
    * Array Addition I function.
@@ -39,22 +27,12 @@ public class ArrayAdditionOne {
   private static String arrayAdditionOne(int[] arr) {
     Arrays.sort(arr);
     int largest = arr[arr.length - 1];
-    int oneChar = "1".charAt(0);
-
-    for (int i = 0; i < pow(2, arr.length); i++) {
-      String bin = Integer.toBinaryString(i);
-      String combo = padLeft(bin, arr.length - 1);
-      int sum = 0;
-      for (int j = 0; j < combo.length(); j++) {
-        if (combo.charAt(j) == oneChar) {
-          sum += arr[j];
-        }
-        if (sum == largest) {
-          return "true";
-        }
-      }
+    int sum=0;
+    for(int i=0;i<arr.length-1;i++){
+      sum+=arr[i];
+      if(sum==largest)
+        return "true";
     }
-
     return "false";
   }
 
